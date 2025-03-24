@@ -9,7 +9,7 @@ import { GiHamburger } from "react-icons/gi";
 import { RxCross2 } from "react-icons/rx";
 import Nav from './Nav'
 import Card from './Card'
-import FoodData from '../food'
+import FoodData from '../Food.js'
 import { DataContext } from '../context/UseContext';
 import Card2 from './Card2';
 import { useSelector } from 'react-redux';
