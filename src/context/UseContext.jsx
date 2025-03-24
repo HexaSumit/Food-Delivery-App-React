@@ -1,5 +1,5 @@
 import React, { createContext, useState } from 'react'
-import FoodData from '../food'
+import FoodData from '../Food.js'
 
 export const DataContext=createContext()
 function UseContext({children}) {
