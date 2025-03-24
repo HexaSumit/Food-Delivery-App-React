@@ -3,7 +3,7 @@ import { MdFastfood } from "react-icons/md";
 import { FiShoppingBag } from "react-icons/fi";
 import { IoSearch } from "react-icons/io5";
 import { DataContext } from '../context/UseContext';
-import FoodData from '../food';
+import FoodData from '../Food.js';
 import { useSelector } from 'react-redux';
 
 function Nav() {
