@@ -13,7 +13,7 @@ import FoodData from '../food'
 import { DataContext } from '../context/UseContext';
 import Card2 from './Card2';
 import { useSelector } from 'react-redux';
-
+import { toast } from "react-toastify";
 
 function Home() {
   const foodItemsMenus = [
@@ -63,6 +63,7 @@ function Home() {
 
   let items = useSelector((state) => state.cart)   //SEEE HERE 
   console.log(items)
+  // console.log(items.length)
   let subtotal = items.reduce((total, item) => total + item.price * item.qty, 0);
   let deliveryfee = 20;
   let taxes = subtotal * 0.5 / 100;
@@ -104,13 +105,15 @@ function Home() {
           />
         </header>
 
-        <div className=' w-full mt-8 flex flex-col gap-8'>
+          {/* CART FEATURE  */}
+        {items.length>0 ? <>
+          <div className=' w-full mt-8 flex flex-col gap-8'>
           {items.map((item) => {
             return <Card2 key={item.id} name={item.name} price={item.price} image={item.image} id={item.id} qty={item.qty} />
           })}
         </div>
 
-        {/* PRICESS SECTION IN CART  */}
+          {/* PRICESS SECTION IN CART  */}
         <div className=' w-full border-t-2 border-b-2 border-gray-500 mt-7 pb-7'>
           <div className=' flex flex-col mt-4 gap-2 md:text-xl text-md text-gray-400 font-bold'>
             <div className=' w-full  flex justify-between items-center '>
@@ -127,18 +130,20 @@ function Home() {
             </div>
           </div>
         </div>
-        {/* TOTAL PRICE */}
+
+          {/* TOTAL PRICE  */}
         <div className=' w-full mt-3 flex justify-between items-center md:text-2xl text-xl'>
           <span className=' font-bold'>Total</span>
           <span className=' text-green-500 font-semibold'>Rs- {Total}/-</span>
         </div>
 
         <div className=' w-full flex justify-center items-center mt-10'>
-          <button className="bg-green-500 text-white md:text-lg md:px-60 md:py-3 text-md px-20 py-2 rounded-lg hover:bg-green-600 transition">
+          <button className="bg-green-500 text-white md:text-lg md:px-60 md:py-3 text-md px-20 py-2 rounded-lg hover:bg-green-600 transition" onClick={()=>{toast.success(`Order Placed Successfully......`)}}>
             Place Order
           </button>
         </div>
 
+        </>:<div className=' md:text-3xl text-2xl text-green-500 absolute top-[30%]'>Empty Cart</div>}
       </div> : ''}
 
     </div>

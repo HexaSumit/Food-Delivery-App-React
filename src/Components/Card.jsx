@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from "react-redux";
 import { AddItem } from '../redux/CartSlice';
+import { toast } from "react-toastify";
 
 function Card({id,img,name,price,foodtype}) {
 
@@ -28,7 +29,7 @@ function Card({id,img,name,price,foodtype}) {
         </div>
 
         {/* Button */}
-        <button className="w-full bg-green-400 text-white md:bg-green-100 md:text-green-700 font-medium py-2 mt-3 rounded-lg hover:bg-green-200 transition" onClick={()=>dispatch(AddItem({id:id,name:name,price:price,image:img,qty:1}))}>
+        <button className="w-full bg-green-400 text-white md:bg-green-100 md:text-green-700 font-medium py-2 mt-3 rounded-lg hover:bg-green-200 transition" onClick={()=>{dispatch(AddItem({id:id,name:name,price:price,image:img,qty:1}));toast.success(`${name} added to cart`)}}>
             Add to Dish
         </button>
     </div>

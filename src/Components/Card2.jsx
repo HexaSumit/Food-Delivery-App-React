@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaRegTrashAlt } from "react-icons/fa";
 import { useDispatch } from 'react-redux';
-import { AddItem, decreaseQuantity, RemoveItem } from '../redux/CartSlice';
+import { AddItem, decreaseQuantity, increaseQuantity, RemoveItem } from '../redux/CartSlice';
 
 function Card2({name,price,id,image,qty}) {
 
@@ -19,7 +19,7 @@ function Card2({name,price,id,image,qty}) {
                 <div className=' font-bold text-green-400 text-lg h-[50px] w-[110px] flex border-2 border-green-500 rounded-lg overflow-hidden shadow-lg'>
                     <button className=' h-full w-[30%] flex items-center justify-center hover:bg-slate-200' onClick={()=>dispatch(decreaseQuantity(id))}>-</button>
                     <span className='  h-full w-[40%] flex items-center justify-center bg-slate-200'>{qty}</span>
-                    <button className=' h-full w-[30%] flex items-center justify-center hover:bg-slate-200'>+</button>
+                    <button className=' h-full w-[30%] flex items-center justify-center hover:bg-slate-200' onClick={()=>dispatch(increaseQuantity(id))}>+</button>
                 </div>
             </div>
         </div>
