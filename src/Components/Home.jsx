@@ -14,6 +14,9 @@ import { DataContext } from '../context/UseContext';
 import Card2 from './Card2';
 import { useSelector } from 'react-redux';
 import { toast } from "react-toastify";
+import { useDispatch } from 'react-redux';
+import { clearCart } from '../redux/CartSlice';
+
 
 function Home() {
   const foodItemsMenus = [
@@ -60,6 +63,14 @@ function Home() {
       setfoodCategories(newli)
     }
   }
+  let dispatch=useDispatch()
+  
+  const handlePlaceOrder = () => {
+    // Show toast
+    toast.success('Order Placed Successfully...');
+    // Clear the cart
+    dispatch(clearCart());
+  };
 
   let items = useSelector((state) => state.cart)   //SEEE HERE 
   console.log(items)
@@ -138,7 +149,7 @@ function Home() {
         </div>
 
         <div className=' w-full flex justify-center items-center mt-10'>
-          <button className="bg-green-500 text-white md:text-lg md:px-60 md:py-3 text-md px-20 py-2 rounded-lg hover:bg-green-600 transition" onClick={()=>{toast.success(`Order Placed Successfully......`)}}>
+          <button className="bg-green-500 text-white md:text-lg md:px-60 md:py-3 text-md px-20 py-2 rounded-lg hover:bg-green-600 transition" onClick={handlePlaceOrder} >
             Place Order
           </button>
         </div>
